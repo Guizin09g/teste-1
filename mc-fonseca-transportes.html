@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="MC FONSECA Transportes — transporte rodoviário de cargas com pontualidade, segurança e acompanhamento do início ao fim.">
+<title>MC FONSECA Transportes — Sua carga chega. No prazo.</title>
+<style>
+:root{--ink:#10202e;--muted:#5f6d78;--paper:#eef0f2;--amber:#f5a623;--amber-d:#a86a00;--line:#d6dbe0;--white:#fff;--max:1160px;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0c1822;--ink:#eef0f2;--muted:#9aa8b3;--line:#22343f;--white:#13232f;--amber-d:#f5a623;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0c1822;--ink:#eef0f2;--muted:#9aa8b3;--line:#22343f;--white:#13232f;--amber-d:#f5a623;color-scheme:dark}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+.eyebrow{font-size:.85rem;font-weight:800;color:var(--amber-d)}
+.header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:10px;align-items:center;font-size:1.1rem;font-weight:900;letter-spacing:-.04em}
+.brand i{font-style:normal;width:34px;height:34px;display:grid;place-items:center;background:var(--amber);color:#10202e;border-radius:9px;font-size:.9rem;letter-spacing:-.05em}
+.brand small{display:block;font-size:.62rem;font-weight:700;color:var(--muted);letter-spacing:.02em;margin-top:-4px}
+.links{display:flex;align-items:center;gap:30px;font-size:.9rem;font-weight:650}
+.links a:hover,.plain-link:hover{opacity:.65}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;background:#10202e;color:#fff;padding:13px 22px;font-weight:750;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:#24425a}
+.btn.amber{background:var(--amber);color:#10202e}.btn.amber:hover{background:#ffbb45}
+:root[data-theme="dark"] .links .btn,:root:not([data-theme="light"]) .links .btn{}
+.menu{display:none;border:0;background:none;color:var(--ink);font-size:1.5rem;cursor:pointer}
+.hero{padding:80px 0 70px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{max-width:660px;margin:16px 0;font-size:clamp(3.2rem,6.6vw,5.9rem);line-height:.98;letter-spacing:-.06em}
+.lead{max-width:500px;color:var(--muted);font-size:1.1rem}
+.actions{display:flex;align-items:center;gap:14px;margin-top:27px}
+.plain-link{font-weight:700;padding:12px}
+.scene{position:relative;aspect-ratio:1/.92;width:min(100%,500px);margin:auto;border-radius:28px 28px 28px 120px;overflow:hidden;background:linear-gradient(#cfe0ec,#eaf1f5 62%)}
+.sun{position:absolute;right:11%;top:11%;width:20%;aspect-ratio:1;border-radius:50%;background:var(--amber)}
+.ridge{position:absolute;left:-10%;bottom:30%;width:120%;height:28%;border-radius:50% 50% 0 0;background:#8da7ba}
+.ridge.b{left:25%;bottom:30%;width:90%;height:20%;background:#6f8ca2}
+.road{position:absolute;left:0;right:0;bottom:0;height:32%;background:#10202e}
+.road:before{content:"";position:absolute;left:0;right:0;top:48%;height:5px;background:repeating-linear-gradient(90deg,var(--amber) 0 34px,transparent 34px 68px);animation:dash 1.2s linear infinite}
+@keyframes dash{to{background-position-x:-68px}}
+.truck{position:absolute;left:8%;bottom:26%;width:84%;display:flex;align-items:flex-end}
+.cargo{flex:1;height:112px;background:var(--white);border:3px solid #10202e;border-radius:10px 4px 4px 10px;display:grid;place-items:center;color:#10202e;font-weight:900;letter-spacing:-.05em;font-size:clamp(1rem,2.6vw,1.5rem);box-shadow:inset 0 -14px 0 var(--amber)}
+:root[data-theme="dark"] .cargo{background:#eef0f2}
+.cab{width:23%;height:76px;margin-left:5px;background:var(--amber);border:3px solid #10202e;border-radius:6px 22px 4px 4px;position:relative}
+.cab:before{content:"";position:absolute;right:8%;top:14%;width:44%;height:36%;background:#cfe0ec;border:3px solid #10202e;border-radius:4px 14px 2px 2px}
+.wheel{position:absolute;bottom:-17px;width:34px;height:34px;border-radius:50%;background:#10202e;border:6px solid #5f6d78}
+.w1{left:8%}.w2{left:26%}.w3{right:6%}
+.tag{position:absolute;left:6%;top:12%;padding:11px 15px;border-radius:14px;background:#fff;color:#10202e;box-shadow:0 12px 30px #10202e22;font-size:.8rem;font-weight:800}
+.tag span{display:block;color:#5f6d78;font-weight:600;font-size:.72rem}
+.proof{border-block:1px solid var(--line);padding:26px 0}
+.proof-row{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.proof small{max-width:170px;color:var(--muted)}
+.logos{display:flex;justify-content:space-around;align-items:center;gap:20px;flex:1;color:var(--muted);font-weight:800;text-align:center}
+.logos span{display:flex;flex-direction:column;line-height:1.2}.logos b{font-size:1.5rem;letter-spacing:-.04em;color:var(--ink)}.logos em{font-style:normal;font-size:.76rem;font-weight:600}
+.section{padding:94px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:38px}
+.section h2{margin:10px 0 0;font-size:clamp(2.3rem,4.6vw,3.9rem);line-height:1.04;letter-spacing:-.055em}
+.intro{max-width:400px;color:var(--muted);margin:0}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.service{border:1px solid var(--line);border-radius:20px;padding:27px;min-height:250px;transition:.2s}
+.service:hover{transform:translateY(-4px);background:var(--white)}
+.icon{width:50px;height:50px;background:var(--amber);color:#10202e;border-radius:14px;display:grid;place-items:center;font-size:1.35rem;font-weight:900}
+.service h3{margin:24px 0 7px;font-size:1.2rem;letter-spacing:-.03em}
+.service p,.about p{margin:0;color:var(--muted);font-size:.95rem}
+.work{background:#10202e;color:#eef0f2;--muted:#a8b6c1;--line:#2a3f4e}
+.work .eyebrow{color:var(--amber)}
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.project{overflow:hidden;background:#162b3a;border-radius:20px}
+.project-art{height:270px;position:relative;overflow:hidden;background:#1d3a4e;display:grid;place-items:center}
+.project:nth-child(2) .project-art{background:#3a2d1a}
+.route{display:flex;align-items:center;width:78%;gap:0}
+.route b{width:20px;height:20px;border-radius:50%;background:var(--amber);flex:none;box-shadow:0 0 0 6px #f5a62340}
+.route hr{flex:1;border:0;border-top:4px dotted #eef0f2aa;margin:0}
+.route+.cities{display:flex;justify-content:space-between;width:78%;margin-top:14px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+.project-art>div{width:100%;display:flex;flex-direction:column;align-items:center}
+.project-info{display:flex;align-items:center;justify-content:space-between;padding:18px 22px}
+.project-info h3{margin:0;font-size:1.08rem}.project-info p{margin:3px 0 0;color:var(--muted);font-size:.84rem}
+.arrow{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+.about-art{min-height:390px;display:grid;place-items:center;position:relative;overflow:hidden;border-radius:20px;background:var(--amber);color:#10202e}
+.about-art:before,.about-art:after{content:"";position:absolute;width:340px;height:340px;border:2px solid #10202e30;border-radius:50%}
+.about-art:after{width:240px;height:240px}
+.about-art strong{z-index:1;font-size:4.6rem;letter-spacing:-.09em;line-height:.9;text-align:center}
+.about-art strong small{display:block;font-size:1.05rem;letter-spacing:0;margin-top:10px;font-weight:700}
+.about h2{margin-bottom:20px}.about p+p{margin-top:13px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+.stats strong{display:block;font-size:1.9rem;letter-spacing:-.05em}.stats span{font-size:.78rem;color:var(--muted)}
+.quote{padding:75px 0;background:var(--amber);color:#10202e;text-align:center}
+.quote blockquote{max-width:900px;margin:auto;font-size:clamp(1.7rem,3.8vw,3rem);line-height:1.18;letter-spacing:-.05em;font-weight:800}
+.quote cite{display:block;margin-top:23px;font-size:.88rem;font-style:normal;font-weight:600}
+.contact{padding:95px 0}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:75px}
+.contact h2{margin-bottom:18px}
+.contact-copy p{max-width:400px;color:var(--muted)}
+.email{display:inline-block;margin-top:15px;font-weight:750;border-bottom:2px solid var(--amber);padding-bottom:3px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full,.status{grid-column:1/-1}
+.field label{font-size:.82rem;font-weight:750}
+.field input,.field textarea,.field select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink);outline:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--amber);box-shadow:0 0 0 3px #f5a62355}
+.field textarea{min-height:110px;resize:vertical}
+.status{margin:0;min-height:24px;color:var(--amber-d);font-weight:700;font-size:.9rem}
+.footer{padding:26px 0;background:#10202e;color:#eef0f2}
+.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer p{margin:0;color:#a8b6c1;font-size:.82rem}
+.social{display:flex;gap:18px;font-size:.82rem;font-weight:700}
+.reveal{opacity:0;transform:translateY(15px);transition:opacity .6s,transform .6s}.reveal.visible{opacity:1;transform:none}
+@media(max-width:800px){.hero{padding-top:56px}.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:38px}.section{padding:75px 0}.services{grid-template-columns:1fr 1fr}.section-head{align-items:flex-start;flex-direction:column}.about-art{min-height:320px}.contact-grid{gap:25px}.proof-row{align-items:flex-start;flex-direction:column}.logos{width:100%;justify-content:space-between;flex-wrap:wrap}}
+@media(max-width:600px){.wrap{width:calc(100% - 34px)}.nav{height:67px}.menu{display:block}.links{display:none;position:absolute;top:67px;left:0;right:0;padding:20px 24px 24px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:15px}.links.open{display:flex}.links .btn{width:100%}.hero{padding:44px 0}.hero h1{font-size:clamp(2.9rem,14vw,4.6rem)}.hero-grid{gap:26px}.actions{flex-wrap:wrap}.services,.projects{grid-template-columns:1fr}.service{min-height:210px}.project-art{height:230px}.stats strong{font-size:1.5rem}.stats span{font-size:.7rem}.form{grid-template-columns:1fr}.field.full,.status{grid-column:auto}.footer-row{align-items:flex-start;flex-direction:column}.social{flex-wrap:wrap}.cargo{height:84px}.cab{height:58px}}
+.mbar{display:none}
+@media(max-width:600px){.mbar{display:grid;grid-template-columns:1fr 1fr 1.35fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:6;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:1px solid var(--line);transition:transform .25s}.mbar.hide{transform:translateY(115%)}.mbar a{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 8px;border-radius:999px;font-weight:800;font-size:.88rem;border:1px solid var(--line);background:var(--white);color:var(--ink)}.mbar a.main{background:var(--amber);border-color:var(--amber);color:#10202e}.footer{padding-bottom:96px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition-duration:.01ms!important;animation:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="header">
+<nav class="nav wrap" aria-label="Navegação principal">
+<a class="brand" href="#inicio"><i>MC</i><span>MC FONSECA<small>Transportes</small></span></a>
+<button class="menu" aria-label="Abrir menu" aria-expanded="false">☰</button>
+<div class="links">
+<a href="#servicos">Serviços</a>
+<a href="#rotas">Rotas</a>
+<a href="#sobre">Sobre</a>
+<a class="btn amber" href="#contato">Pedir cotação <span>↗</span></a>
+</div>
+</nav>
+</header>
+<main>
+<section class="hero" id="inicio">
+<div class="wrap hero-grid">
+<div class="reveal">
+<span class="eyebrow">Transporte rodoviário de cargas</span>
+<h1>Sua carga chega. No prazo.</h1>
+<p class="lead">Transportamos com segurança, pontualidade e acompanhamento do início ao fim, para empresas que não podem atrasar.</p>
+<div class="actions">
+<a class="btn amber" href="#contato">Pedir cotação <span>↗</span></a>
+<a class="plain-link" href="#servicos">Ver serviços ↓</a>
+</div>
+</div>
+<div class="scene reveal" role="img" aria-label="Caminhão da MC FONSECA Transportes na estrada">
+<span class="sun"></span><span class="ridge"></span><span class="ridge b"></span>
+<span class="tag">Entrega confirmada<span>Carga #2481 · no prazo</span></span>
+<div class="road"></div>
+<div class="truck">
+<div class="cargo">MC FONSECA</div>
+<div class="cab"></div>
+<span class="wheel w1"></span><span class="wheel w2"></span><span class="wheel w3"></span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="proof">
+<div class="wrap proof-row">
+<small>Compromisso em cada viagem</small>
+<div class="logos">
+<span><b>Pontualidade</b><em>janela de entrega respeitada</em></span>
+<span><b>Segurança</b><em>carga protegida na estrada</em></span>
+<span><b>Rastreio</b><em>você sabe onde ela está</em></span>
+<span><b>Atendimento</b><em>contato direto e rápido</em></span>
+</div>
+</div>
+</section>
+
+<section class="section" id="servicos">
+<div class="wrap">
+<div class="section-head reveal">
+<div>
+<span class="eyebrow">Serviços</span>
+<h2>Do carregamento<br>à porta do cliente.</h2>
+</div>
+<p class="intro">Cuidamos do transporte inteiro para que você foque no seu negócio.</p>
+</div>
+<div class="services">
+<article class="service reveal">
+<div class="icon">▣</div>
+<h3>Carga lotação</h3>
+<p>Veículo dedicado à sua carga, com saída rápida e entrega direta, sem paradas para consolidação.</p>
+</article>
+<article class="service reveal">
+<div class="icon">▤</div>
+<h3>Carga fracionada</h3>
+<p>Pague apenas pelo espaço que usar. Ideal para volumes menores com frequência regular.</p>
+</article>
+<article class="service reveal">
+<div class="icon">◎</div>
+<h3>Rastreamento e suporte</h3>
+<p>Acompanhe a viagem e receba a confirmação de entrega. Dúvidas? Falamos direto com você.</p>
+</article>
+</div>
+</div>
+</section>
+
+<section class="section work" id="rotas">
+<div class="wrap">
+<div class="section-head reveal">
+<div>
+<span class="eyebrow">Rotas</span>
+<h2>Onde a nossa<br>frota chega.</h2>
+</div>
+<p class="intro">Operamos corredores de alto fluxo com saídas programadas. Outras rotas sob consulta.</p>
+</div>
+<div class="projects">
+<article class="project reveal">
+<div class="project-art"><div>
+<div class="route"><b></b><hr><b></b></div>
+<div class="cities"><span>Origem</span><span>Destino</span></div>
+</div></div>
+<div class="project-info">
+<div><h3>Corredor Sul–Sudeste</h3><p>Saídas semanais · lotação e fracionada</p></div>
+<span class="arrow">↗</span>
+</div>
+</article>
+<article class="project reveal">
+<div class="project-art"><div>
+<div class="route"><b></b><hr><b></b></div>
+<div class="cities"><span>Origem</span><span>Destino</span></div>
+</div></div>
+<div class="project-info">
+<div><h3>Rotas sob demanda</h3><p>Todo o Brasil · cotação personalizada</p></div>
+<span class="arrow">↗</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="section about" id="sobre">
+<div class="wrap about-grid">
+<div class="about-art reveal"><strong>MC<br>FONSECA<small>Transportes</small></strong></div>
+<div class="reveal">
+<span class="eyebrow">Sobre a empresa</span>
+<h2>Estrada é coisa<br>de confiança.</h2>
+<p>A MC FONSECA Transportes nasceu para fazer o simples bem feito: buscar a carga, cuidar dela no caminho e entregar no combinado. Motoristas experientes, frota em dia e comunicação clara com quem contrata.</p>
+<p>Sem surpresa no prazo, sem silêncio no meio da viagem.</p>
+<div class="stats">
+<div><strong>00+</strong><span>anos de estrada</span></div>
+<div><strong>00</strong><span>veículos na frota</span></div>
+<div><strong>00%</strong><span>entregas no prazo</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="quote">
+<div class="wrap">
+<blockquote class="reveal">“Combinou o prazo, cumpriu o prazo. Hoje a MC FONSECA é parte da nossa operação.”<cite>Nome do cliente · Empresa (depoimento de exemplo)</cite></blockquote>
+</div>
+</section>
+
+<section class="contact" id="contato">
+<div class="wrap contact-grid">
+<div class="contact-copy reveal">
+<span class="eyebrow">Cotação</span>
+<h2>Precisa enviar<br>uma carga?</h2>
+<p>Informe origem, destino e o tipo de carga. Respondemos com valor e prazo.</p>
+<a class="email" href="mailto:contato@mcfonseca.com.br">contato@mcfonseca.com.br ↗</a>
+</div>
+<form class="form reveal" id="contactForm">
+<div class="field"><label for="name">Seu nome</label><input id="name" name="name" autocomplete="name" placeholder="Como podemos te chamar?" required></div>
+<div class="field"><label for="email">Seu e-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br" required></div>
+<div class="field"><label for="origem">Origem</label><input id="origem" name="origem" placeholder="Cidade/UF" required></div>
+<div class="field"><label for="destino">Destino</label><input id="destino" name="destino" placeholder="Cidade/UF" required></div>
+<div class="field full"><label for="tipo">Tipo de serviço</label>
+<select id="tipo" name="tipo"><option>Carga lotação</option><option>Carga fracionada</option><option>Ainda não sei</option></select></div>
+<div class="field full"><label for="message">Sobre a carga</label><textarea id="message" name="message" placeholder="Tipo de mercadoria, peso aproximado, prazo desejado..." required></textarea></div>
+<button class="btn amber" type="submit">Pedir cotação <span>↗</span></button>
+<p class="status" id="formStatus" role="status" aria-live="polite"></p>
+</form>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="wrap footer-row">
+<a class="brand" href="#inicio"><i>MC</i><span>MC FONSECA<small>Transportes</small></span></a>
+<p>© <span id="year"></span> MC FONSECA Transportes. Todos os direitos reservados.</p>
+<div class="social">
+<a href="mailto:contato@mcfonseca.com.br">E-mail ↗</a>
+<a href="#servicos">Serviços</a>
+<a href="#inicio">Voltar ao topo ↑</a>
+</div>
+</div>
+</footer>
+<nav class="mbar" id="mbar" aria-label="Ações rápidas">
+<a href="tel:+5500000000000">📞 Ligar</a>
+<a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20uma%20cota%C3%A7%C3%A3o%20de%20frete." target="_blank" rel="noopener">💬 WhatsApp</a>
+<a class="main" href="#contato">Pedir cotação</a>
+</nav>
+<script>
+const menuButton=document.querySelector('.menu');
+const menu=document.querySelector('.links');
+menuButton.addEventListener('click',()=>{const open=menu.classList.toggle('open');menuButton.setAttribute('aria-expanded',open);menuButton.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');menuButton.textContent=open?'×':'☰'});
+menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{menu.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Abrir menu');menuButton.textContent='☰'}));
+document.getElementById('year').textContent=new Date().getFullYear();
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(item=>observer.observe(item))}else{document.querySelectorAll('.reveal').forEach(item=>item.classList.add('visible'))}
+document.getElementById('contactForm').addEventListener('submit',event=>{
+event.preventDefault();const form=event.currentTarget;if(!form.reportValidity())return;
+const d=Object.fromEntries(new FormData(form));
+const corpo=`Nome: ${d.name}\nE-mail: ${d.email}\nOrigem: ${d.origem}\nDestino: ${d.destino}\nServiço: ${d.tipo}\n\n${d.message}`;
+document.getElementById('formStatus').textContent='Abrindo seu e-mail para enviar o pedido a contato@mcfonseca.com.br.';
+window.location.href='mailto:contato@mcfonseca.com.br?subject='+encodeURIComponent('Cotação de frete — '+d.name)+'&body='+encodeURIComponent(corpo);
+form.reset()});
+const mbar=document.getElementById('mbar');
+if(mbar&&'IntersectionObserver' in window){new IntersectionObserver(es=>es.forEach(e=>mbar.classList.toggle('hide',e.isIntersecting)),{threshold:.25}).observe(document.getElementById('contato'))}
+</script>
+</body>
+</html>
